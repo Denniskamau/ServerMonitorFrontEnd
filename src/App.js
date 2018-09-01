@@ -4,6 +4,8 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import { defaultFunction } from './actions';
+import {Router, Route} from 'react-router';
+import Signup from './components/signup';
 
 class App extends Component {
 
@@ -15,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        React Redux Starter Template
+        <Signup></Signup>
       </div>
     );
   }
