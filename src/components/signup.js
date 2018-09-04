@@ -1,14 +1,33 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, SubmissionError  } from 'redux-form'
 
-const submit =  (values) => {
-    console.log(values)
+const submit =  ({email='',password=''}) => {
+    let errors ={}
+    let formData = {}
+    let isError = false
+    if (email.trim() === ''){
+        errors.email = 'Required'
+        isError = true
+    }
+    if (password.trim()=== ''){
+        errors.password ='Required'
+        isError = true
+    }
+    if(isError){
+        throw new SubmissionError(errors)
+    }else {
+        // push data to api
+        formData.email = email
+        formData.password = password
+        console.log('Data', JSON.stringify(formData))
+    }
+
 }
 
-const renderField = ({input ,label, meta:{touched,error}}) => (
+const renderField = ({type,input ,label, meta:{touched,error}}) => (
     <div className="input-row">
     <label>{label}</label>
-      <input {...input} type="text"/>
+      <input {...input} type={type}/>
       {touched && error && 
        <span className="error">{error}</span>}
     </div>
@@ -26,5 +45,6 @@ const SingupForm = ({handleSubmit, pristine, reset, submitting }) => {
 }
 
 export default reduxForm({
-    form: 'SingupForm'
+    form: 'SingupForm',
+    submit
 })(SingupForm)
