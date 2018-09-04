@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { defaultFunction } from './actions';
 import {Router, Route} from 'react-router';
 import Signup from './components/signup';
+import Login from './components/login'
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div>
         <Signup></Signup>
+        <Login></Login>
       </div>
     );
   }
