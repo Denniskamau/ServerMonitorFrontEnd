@@ -21,7 +21,6 @@ async function submitToServer(data) {
   }
 const submit =  ({email='',password=''}) => {
     let errors ={}
-    let formData = {}
     let isError = false
     if (email.trim() === ''){
         errors.email = 'Required'
@@ -36,8 +35,13 @@ const submit =  ({email='',password=''}) => {
     }else {
         // push data to api
         submitToServer({email,password})
-        .then(data => console.log(data))
-        console.log('Data', JSON.stringify(formData))
+        .then( data => {
+            if(data.error){
+                throw new SubmissionError(data.error)
+            }else {
+                console.log('data',data)
+            }
+        })
     }
 
 }
