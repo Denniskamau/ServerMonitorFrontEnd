@@ -1,6 +1,24 @@
 import React from 'react'
 import { Field, reduxForm, SubmissionError  } from 'redux-form'
 
+
+async function submitToServer(data) {
+    try {
+      let response = await fetch(
+        'http://localhost:8080/user/signup', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+      );
+      let responseJson = await response.json();
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 const submit =  ({email='',password=''}) => {
     let errors ={}
     let formData = {}
@@ -17,8 +35,8 @@ const submit =  ({email='',password=''}) => {
         throw new SubmissionError(errors)
     }else {
         // push data to api
-        formData.email = email
-        formData.password = password
+        submitToServer({email,password})
+        .then(data => console.log(data))
         console.log('Data', JSON.stringify(formData))
     }
 
