@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm, SubmissionError  } from 'redux-form'
+import isValidEmail from 'sane-email-validation'
 
 
 async function submitToServer(data) {
@@ -24,6 +25,10 @@ const submit =  ({email='',password=''}) => {
     let isError = false
     if (email.trim() === ''){
         errors.email = 'Required'
+        isError = true
+    }
+    if(!isValidEmail(email)){
+        errors.error = 'Invalid email'
         isError = true
     }
     if (password.trim()=== ''){
