@@ -1,11 +1,12 @@
 import {
     LOGGING_USER_BEGIN,
     LOGGING_USER_SUCCESS,
-    LOGGING_USER_FAILURE
-  } from '../actions/userAction';
+    LOGGING_USER_FAILURE,
+    POST_USER   
+  } from '../actions/types';
 
 const initialState = {
-    loading: false,
+    loading: true,
     error: null,
     userToken: ''
 
@@ -13,30 +14,15 @@ const initialState = {
   
 const userReducer = (state = initialState, action) => {
     switch(action.type){
-        case LOGGING_USER_BEGIN:
-            // Mark the state as "loading" so we can show a spinner or something
-            // Also, reset any errors. We're starting fresh.
-            return {
-                ...state,
-                loading: true,
-                error: null
-
-            }
-        case LOGGING_USER_SUCCESS:
-            // set loading false
+        case POST_USER:
+        console.log('reducers')
+            // send user data to backend
             return {
                 ...state,
                 loading:false,
-                userToken: action.payload.user
+                userToken: action.payload
             }
-        case LOGGING_USER_FAILURE:
-            // set loading false
-            return {
-                ...state,
-                loading:false,
-                error: action.payload.error,
-                userToken:''
-            }
+        
         default:
             return state
     }   

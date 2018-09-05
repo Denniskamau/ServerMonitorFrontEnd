@@ -4,16 +4,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore, applyMiddleware } from 'redux';
+import store from './store'
 import { Provider } from 'react-redux';
-import logger from 'redux-logger';
-import reducers from './reducers';
-import ReduxPromise from 'redux-promise';
 
-const store = createStore(
-    reducers,
-    applyMiddleware(logger, ReduxPromise)
-);
+
+
 
 ReactDOM.render(
     <Provider store={store}>
