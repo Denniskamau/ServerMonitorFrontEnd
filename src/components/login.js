@@ -1,25 +1,27 @@
 import React from 'react'
 import { Field, reduxForm, SubmissionError  } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
+import { connect} from 'react-redux'
+import { getUser } from '../actions/userAction'
 
-
-async function submitToServer(data) {
-    try {
-      let response = await fetch(
-        'http://localhost:8080/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-      );
-      let responseJson = await response.json();
-      return responseJson;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+// async function submitToServer(data) {
+//     // try {
+//     //   let response = await fetch(
+//     //     'http://localhost:8080/user/login', {
+//     //         method: 'POST',
+//     //         headers: {
+//     //             'Content-type': 'application/json'
+//     //         },
+//     //         body: JSON.stringify(data)
+//     //     }
+//     //   );
+//     //   let responseJson = await response.json();
+//     //   return responseJson;
+//     // } catch (error) {
+//     //   console.error(error);
+//     // }
+    
+//   }
 const submit =  ({email='',password=''}) => {
     let errors ={}
     let isError = false
@@ -39,7 +41,8 @@ const submit =  ({email='',password=''}) => {
         throw new SubmissionError(errors)
     }else {
         // push data to api
-        submitToServer({email,password})
+        getUser({email,password})
+        // submitToServer({email,password})
         .then( data => {
             if(data.error){
                 throw new SubmissionError(data.error)
@@ -69,6 +72,7 @@ const LoginForm = ({handleSubmit, pristine, reset, submitting }) => {
         <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
         </form>
     )
+
 }
 
 export default reduxForm({
