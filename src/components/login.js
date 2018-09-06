@@ -4,25 +4,12 @@ import isValidEmail from 'sane-email-validation'
 import { connect} from 'react-redux'
 import { getUser } from '../actions/userAction'
 
-// async function submitToServer(data) {
-//     // try {
-//     //   let response = await fetch(
-//     //     'http://localhost:8080/user/login', {
-//     //         method: 'POST',
-//     //         headers: {
-//     //             'Content-type': 'application/json'
-//     //         },
-//     //         body: JSON.stringify(data)
-//     //     }
-//     //   );
-//     //   let responseJson = await response.json();
-//     //   return responseJson;
-//     // } catch (error) {
-//     //   console.error(error);
-//     // }
+function submitToServer(data) {
+    console.log('data', data)
+    getUser(data)
     
-//   }
-const submit =  ({email='',password=''}) => {
+  }
+let submit =  ({email='',password='',dispatch}) => {
     let errors ={}
     let isError = false
     if (email.trim() === ''){
@@ -48,9 +35,9 @@ const submit =  ({email='',password=''}) => {
         data.email = email
         data.password = password
         console.log(JSON.stringify(data))
-        getUser(data)
         console.log('sending data')
-        // submitToServer({email,password})
+        return submitToServer(data)
+       // submitToServer({email,password})
         // .then( data => {
         //     if(data.error){
         //         throw new SubmissionError(data.error)
