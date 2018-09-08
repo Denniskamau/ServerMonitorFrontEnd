@@ -9,9 +9,9 @@ class App extends Component {
     return (
       // <div><Login ></Login></div>
       <div>
-        <Signup></Signup>
+        <Signup store={this.props.store}></Signup>
         <hr></hr>
-        <Login></Login>
+        <Login store={this.props.store}></Login>
       </div>
 
     )

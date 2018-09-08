@@ -8,7 +8,7 @@ import {
 
 const initialState = {
     loading: true,
-    error: null,
+    error: '',
     userToken: ''
 
 }
@@ -21,14 +21,16 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading:false,
-                userToken: action.payload
+                userToken: action.payload,
+                error: action.payload.error
             }
         case SIGNUP_USER:
             console.log('reducer hit')
             return {
                 ...state,
                 loading: false,
-                userToken: action.payload
+                userToken: action.payload,
+                error: action.payload.error
             }
         
         default:
