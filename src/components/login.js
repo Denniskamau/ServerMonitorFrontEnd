@@ -9,6 +9,13 @@ function submitToServer(data) {
     getUser(data)
     
   }
+
+const mapDispatchToProps = dispatch => {
+    return {
+      addUseAction: data => { dispatch(getUser(data)) }
+    }
+  }
+   
 let submit =  ({email='',password='',dispatch}) => {
     let errors ={}
     let isError = false
@@ -58,7 +65,8 @@ const renderField = ({type,input ,label, meta:{touched,error}}) => (
     </div>
   )
 
-let LoginForm = ({handleSubmit, pristine, reset, submitting }) => {
+let LoginForm = props => {
+    const {handleSubmit, pristine, reset, submitting } = props
     return (
         <form onSubmit={ handleSubmit(submit)}>
         <Field name="email" label="Email" component={renderField} type="email" placeholder="Email"/>
@@ -74,9 +82,16 @@ let LoginForm = ({handleSubmit, pristine, reset, submitting }) => {
 
 
 
+// export default reduxForm({
+//     form: 'LoginForm',
+//     submit
+// })(LoginForm)
+
 LoginForm = reduxForm({
     form: 'LoginForm',
     submit
 })(LoginForm)
 
-export default connect(null, { getUser })(LoginForm)
+LoginForm = connect(null, getUser)(LoginForm)
+
+export default LoginForm
