@@ -1,76 +1,49 @@
-import React from 'react'
+import React ,{ Component}from 'react'
 import { Field, reduxForm, SubmissionError  } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 
-async function submitToServer(data) {
-    try {
-      let response = await fetch(
-        'http://localhost:8080/user/signup', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-      );
-      let responseJson = await response.json();
-      return responseJson;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-const submit =  ({email='',password=''}) => {
-    let errors ={}
-    let isError = false
 
-    if (password.trim()=== ''){
-        errors.password ='Required'
-        isError = true
-    }
-    if (email.trim() === ''){
-        errors.email = 'Required'
-        isError = true
-    }if(!isValidEmail(email)){
-        errors.error = 'Invalid email'
-        isError = true
-    }
-    if(isError){
-        throw new SubmissionError(errors)
-    }else {
-        // push data to api
-        submitToServer({email,password})
-        .then( data => {
-            if(data.error){
-                throw new SubmissionError(data.error)
-            }else {
-                console.log('data',data)
-            }
-        })
-    }
+class SignupForm extends Component {
 
-}
-
-const renderField = ({type,input ,label, meta:{touched,error}}) => (
-    <div className="input-row">
-    <label>{label}</label>
-      <input {...input} type={type}/>
-      {touched && error && 
-       <span className="error">{error}</span>}
-    </div>
-  )
-
-const SingupForm = ({handleSubmit, pristine, reset, submitting }) => {
-    return (
-        <form onSubmit={ handleSubmit(submit)}>
-        <Field name="email" label="Email" component={renderField} type="email" placeholder="Email"/>
-        <Field name="password" label="Password" component={renderField} type="password" placeholder="Password"/>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-        </form>
+    renderField = ({type,input ,label, meta:{touched,error}}) => {(
+        <div className="input-row">
+        <label>{label}</label>
+        <input {...input} type={type}/>
+        {touched && error && 
+        <span className="error">{error}</span>}
+        </div>
     )
+    }
+    render() {
+        const {handleSubmit, pristine, submitting } = this.props
+        return (
+            <div><h1>singup</h1> 
+            <form>
+                <div>
+                    <label>Email</label>
+                    <div>
+                    <Field name="email" label="Email" component="input" type="text" placeholder="Email" />
+                    </div>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <div>
+                    <Field name="firstName" label="Password" component="input" type="password" placeholder="Password" />
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" disabled={pristine || submitting}>Submit</button>
+                </div>
+            {/* <input name="email" label="Email" component={this.renderField} type="email" placeholder="Email"/>  */}
+            </form>
+            </div>
+
+
+        )
+    }
 }
+
 
 export default reduxForm({
-    form: 'SingupForm',
-    submit
-})(SingupForm)
+    form: 'SignupForm'
+})(SignupForm)
