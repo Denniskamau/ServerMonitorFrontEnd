@@ -2,7 +2,8 @@ import {
     LOGGING_USER_BEGIN,
     LOGGING_USER_SUCCESS,
     LOGGING_USER_FAILURE,
-    POST_USER   
+    POST_USER,
+    SIGNUP_USER   
   } from '../actions/types';
 
 const initialState = {
@@ -20,6 +21,13 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading:false,
+                userToken: action.payload
+            }
+        case SIGNUP_USER:
+            console.log('reducer hit')
+            return {
+                ...state,
+                loading: false,
                 userToken: action.payload
             }
         
