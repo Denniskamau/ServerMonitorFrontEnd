@@ -67,6 +67,7 @@ class LoginForm extends Component {
 
         return (
             <form onSubmit={ handleSubmit(this.submit)}>
+            <h1>Login</h1>
             <div>
                 <label>Email</label>
                 <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
