@@ -1,7 +1,9 @@
 import React ,{ Component}from 'react'
 import { Field, reduxForm, SubmissionError  } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
-import {signUpUser} from '../actions/userAction'  
+import {signUpUser} from '../actions/userAction' 
+import formcomponent from './formcomponent'
+
 import store from '../store';
 
 class SignupForm extends Component {
@@ -18,7 +20,6 @@ class SignupForm extends Component {
 
 
     submitToServer = (data)=> {
-        console.log('data', data)
         this.props.dispatch(signUpUser(data))
         
       }
@@ -29,29 +30,15 @@ class SignupForm extends Component {
       }
     
     getStoreState = () => {
-        // Typical usage (don't forget to compare props):
-        console.log('state now is', store.getState())
-        // if (this.props.userID !== prevProps.userID) {
-        //   this.fetchData(this.props.userID);
-        // }
         const state = store.getState()
         
         if (state.user.error){
             const error = state.user.error
-            // this.state.error= error
             this.setState({
                 error:error
             })
-    
-            console.log('error',this.state.error)
-           // throw new SubmissionError(this.state.error)
         }
-        // this.setState({
-        //     loading: state.user.loading,
-        //     error: state.user.error,
-        //     userToken: state.user.userToken 
-        // })
-        console.log('state is', this.state)
+
         return this.state
     }
    
@@ -66,7 +53,6 @@ class SignupForm extends Component {
             if(!isValidEmail(email)){
                 let error = 'Invalid email'
                 errors.email = error
-                console.log(JSON.stringify(errors))
                 isError = true
                 throw new SubmissionError(error)
             }
@@ -81,8 +67,6 @@ class SignupForm extends Component {
                 let data ={}
                 data.email = email
                 data.password = password
-                console.log(JSON.stringify(data))
-                console.log('sending data')
                 return this.submitToServer(data)
         }
     
@@ -98,12 +82,12 @@ class SignupForm extends Component {
                     <form onSubmit={ handleSubmit(this.submit)}>
                     
                     <div>
-                        <label>Email</label>
-                        <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
+                        
+                        <Field name="email" label="Email" component={formcomponent} type="email" placeholder="Email"/>
                     </div>
                     <div>
-                        <label>Password</label>
-                        <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
+                        
+                        <Field name="password" label="Password" component={formcomponent} type="password" placeholder="Password"/>
                     </div>
                     
                     <button class="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
@@ -119,6 +103,11 @@ class SignupForm extends Component {
 }
 
 
-export default reduxForm({
+
+SignupForm = reduxForm({
     form: 'SignupForm'
 })(SignupForm)
+
+
+
+export default SignupForm

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class formcomponent extends Component {
   render() {
-    const {type,input ,label, meta:{touched,error,warning}} = this.props
+    const {type,input ,label, meta:{touched,error}} = this.props
     return (
         <div className="input-row">
         <label>{label}</label>

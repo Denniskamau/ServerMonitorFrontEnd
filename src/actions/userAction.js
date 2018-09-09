@@ -1,14 +1,10 @@
 
 import {
-  LOGGING_USER_BEGIN,
-  LOGGING_USER_SUCCESS,
-  LOGGING_USER_FAILURE,
   POST_USER,
   SIGNUP_USER   
 } from './types';
 
 export const  getUser = (data) => dispatch => {
-      console.log('reached action')
       fetch(
           'http://localhost:8080/user/login', { 
             method: 'POST',
@@ -29,7 +25,6 @@ export const  getUser = (data) => dispatch => {
 }
 
 export const signUpUser = (data) => dispatch => {
-  console.log('signup action')
   fetch(
     'http://localhost:8080/user/signup', { 
       method: 'POST',
