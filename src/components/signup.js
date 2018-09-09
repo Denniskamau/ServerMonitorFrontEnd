@@ -38,7 +38,10 @@ class SignupForm extends Component {
         
         if (state.user.error){
             const error = state.user.error
-            this.state.error= error
+            // this.state.error= error
+            this.setState({
+                error:error
+            })
     
             console.log('error',this.state.error)
            // throw new SubmissionError(this.state.error)
