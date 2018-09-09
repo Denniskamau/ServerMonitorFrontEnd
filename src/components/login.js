@@ -21,6 +21,8 @@ class LoginForm extends Component {
         this.getStoreState = this.getStoreState.bind(this)
     }
 
+    
+
     submitToServer = (data)=> {
     console.log('data', data)
     this.props.dispatch(getUser(data))

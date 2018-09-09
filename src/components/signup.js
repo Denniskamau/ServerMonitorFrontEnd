@@ -88,8 +88,9 @@ class SignupForm extends Component {
         const {handleSubmit, pristine, submitting } = this.props
         const checkState = this.getStoreState()
         return (
-            <div><h1>singup</h1> 
+            <div> 
             <form onSubmit={ handleSubmit(this.submit)}>
+            <h1>singup</h1>
             <div>
                 <label>Email</label>
                 <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
@@ -99,7 +100,7 @@ class SignupForm extends Component {
                 <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
             </div>
             
-            <button  type="submit" disabled={pristine || submitting}>Submit</button>
+            <button class="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
             <p>{checkState.error}</p>
             </form>
             
