@@ -27,6 +27,9 @@ form {
   width: 400px;
   margin: 0 auto;
 }
+div {
+  max-width: 40rem;
+}
 
 input {
   width: 100%;

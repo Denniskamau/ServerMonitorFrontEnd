@@ -88,22 +88,26 @@ class SignupForm extends Component {
         const {handleSubmit, pristine, submitting } = this.props
         const checkState = this.getStoreState()
         return (
-            <div> 
-            <form onSubmit={ handleSubmit(this.submit)}>
-            <h1>singup</h1>
-            <div>
-                <label>Email</label>
-                <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
-            </div>
-            <div>
-                <label>Password</label>
-                <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
-            </div>
-            
-            <button class="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
-            <p>{checkState.error}</p>
-            </form>
-            
+            <div class="card border-primary mb-3" >
+                <div class="card-header">Signup</div>
+                    <div class="form-group card-body"> 
+                    <h4 class="card-title">Create an account with us</h4>
+                    <form onSubmit={ handleSubmit(this.submit)}>
+                    
+                    <div>
+                        <label>Email</label>
+                        <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
+                    <p>{checkState.error}</p>
+                    </form>
+                    
+                    </div>
             </div>
 
 

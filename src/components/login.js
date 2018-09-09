@@ -105,20 +105,26 @@ class LoginForm extends Component {
         const testState = this.getStoreState()
        // console.log('loading valu', loading)
         return (
-            <form onSubmit={ handleSubmit(this.submit)}>
-            <h1>Login</h1>
-            <div>
-                <label>Email</label>
-                <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
+            <div class="card border-primary mb-3" >
+                <div class="card-header">Login</div>
+                <div class="form-group card-body"> 
+                    <h4 class="card-title">Login to your account</h4>
+                    <form onSubmit={ handleSubmit(this.submit)}>
+                    <h1>Login</h1>
+                    <div>
+                        <label>Email</label>
+                        <Field name="email" label="Email" component="input" type="email" placeholder="Email"/>
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
+                    <p>{testState.error}</p>
+                    </form>
+                </div>
             </div>
-            <div>
-                <label>Password</label>
-                <Field name="password" label="Password" component="input" type="password" placeholder="Password"/>
-            </div>
-            
-            <button  type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
-            <p>{testState.error}</p>
-            </form>
         )
     }
 }
