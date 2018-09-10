@@ -104,7 +104,4 @@ LoginForm = reduxForm({
 })(LoginForm)
 
 
-
-
-
 export default LoginForm
