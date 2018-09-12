@@ -3,9 +3,15 @@ import { shallow } from 'enzyme'
 import LoginForm from '../../src/components/login'
 
 describe('render login', ()=>{
+    let wrapper
+    beforeEach(()=>{
+        wrapper = shallow(<LoginForm/>)
+    })
     it('should render correctly', ()=>{
-        const wrapper = shallow(<LoginForm/>)
         expect(wrapper).toMatchSnapshot();
     })
 
+
 })
+
+
