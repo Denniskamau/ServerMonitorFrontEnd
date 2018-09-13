@@ -46,9 +46,11 @@ describe('render login', ()=>{
 })
 
 describe('handle submit', ()=>{
-    it('should render button on the form', () => {
+    it('should call submit function', () => {
         const component = shallow(<LoginForm/>)
-
-        expect(component.find('button').length).toEqual(2);
+        const submit = jest.fn()
+        submit()
+        component.find('[form]').simulate('click')
+        expect(submit).toHaveBeenCalled()
     });
 })

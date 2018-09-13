@@ -12,7 +12,7 @@ describe('render signup component', ()=>{
         // const wrapper = shallow(<Signup/>)
         expect(wrapper).toMatchSnapshot();
     })
-    it('should find login form', () => {
+    it('should find signup form', () => {
         expect(wrapper.find('[form]').length).toEqual(1);
     });
 
