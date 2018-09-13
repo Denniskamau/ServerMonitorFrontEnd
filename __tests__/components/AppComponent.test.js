@@ -11,6 +11,7 @@ describe('App', () => {
     })
 
     it('should render correctly', () => {
+        // console.log('wrapper in app',wrapper)
         expect(wrapper).toMatchSnapshot();
     })
     

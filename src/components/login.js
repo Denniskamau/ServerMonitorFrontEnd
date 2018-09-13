@@ -29,33 +29,34 @@ class LoginForm extends Component {
   }
 
 // Handle validation of Form data
-  submit =  ({email='',password=''}) => {
-    let errors ={}
-    let isError = false
-    if (email.trim() === ''){
-        errors.email = 'Required'
-        isError = true
-        throw new SubmissionError(errors.email)
-    }
-    if(!isValidEmail(email)){
-        let error = 'Invalid email'
-        errors.email = error
-        isError = true
-        throw new SubmissionError(error)
-    }
-    if (password.trim()=== ''){
-        errors.password ='Required'
-        isError = true
-    }
-    if(isError){
-        throw new SubmissionError(errors)
-    }else {
-        // push data to api
-        let data ={}
-        data.email = email
-        data.password = password
-        return this.submitToServer(data)
-}
+  submit =  () => {
+
+    return 'Hello'
+//     if (email.trim() === ''){
+//         errors.email = 'Required'
+//         isError = true
+//         throw new SubmissionError(errors.email)
+//     }
+//     if(!isValidEmail(email)){
+//         let error = 'Invalid email'
+//         errors.email = error
+//         isError = true
+//         throw new SubmissionError(error)
+//     }
+//     if (password.trim()=== ''){
+//         errors.password ='Required'
+//         isError = true
+//     }
+//     if(isError){
+//         return errors
+//         // throw new SubmissionError(errors)
+//     }else {
+//         // push data to api
+//         let data ={}
+//         data.email = email
+//         data.password = password
+//         return this.submitToServer(data)
+// }
 
 }
     getStoreState = () => {
@@ -88,7 +89,7 @@ class LoginForm extends Component {
                         <Field name="password" label="Password" component={formcomponent} type="password" placeholder="Password" />
                     </div>
                     
-                    <button id="loginBtn" class="btn btn-primary" type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
+                    <button id="foo" className="create" class="btn btn-primary" type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
                     <p>{testState.error}</p>
                     </form>
                 </div>
