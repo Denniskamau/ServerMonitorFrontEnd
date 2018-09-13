@@ -35,6 +35,7 @@ class LoginForm extends Component {
     if (email.trim() === ''){
         errors.email = 'Required'
         isError = true
+        throw new SubmissionError(errors.email)
     }
     if(!isValidEmail(email)){
         let error = 'Invalid email'
@@ -72,11 +73,11 @@ class LoginForm extends Component {
         const testState = this.getStoreState()
 
         return (
-            <div class="card border-primary mb-3" >
+            <div class="card border-primary mb-3" className='loginForm'>
                 <div class="card-header">Login</div>
                 <div class="form-group card-body"> 
                     <h4 class="card-title">Login to your account</h4>
-                    <form onSubmit={ handleSubmit(this.submit)}>
+                    <form onSubmit={ handleSubmit(this.submit)} >
                     
                     <div>
                         
@@ -87,7 +88,7 @@ class LoginForm extends Component {
                         <Field name="password" label="Password" component={formcomponent} type="password" placeholder="Password" />
                     </div>
                     
-                    <button class="btn btn-primary" type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
+                    <button id="loginBtn" class="btn btn-primary" type="submit" variant="raised" color="primary" disabled={pristine || submitting}>Submit</button>
                     <p>{testState.error}</p>
                     </form>
                 </div>
