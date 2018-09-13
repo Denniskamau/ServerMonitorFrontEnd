@@ -16,6 +16,7 @@ class LoginForm extends Component {
         }
 
         this.getStoreState = this.getStoreState.bind(this)
+        this.submit = this.submit.bind(this)
     }
 
 // push data to action responsible for submiting to backend
@@ -29,9 +30,9 @@ class LoginForm extends Component {
   }
 
 // Handle validation of Form data
-  submit =  () => {
+  submit =  (val) => {
 
-    return 'Hello'
+    return val
 //     if (email.trim() === ''){
 //         errors.email = 'Required'
 //         isError = true

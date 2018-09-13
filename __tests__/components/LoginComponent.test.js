@@ -53,4 +53,14 @@ describe('handle submit', ()=>{
         component.find('[form]').simulate('click')
         expect(submit).toHaveBeenCalled()
     });
+    it('should get instance of submit', ()=>{
+        const component = shallow(<LoginForm/>)
+        component.submit = jest.fn()
+        const submit = jest.fn((val)=> {
+            return val
+        })
+        const result = submit('Hello') 
+        expect(component.submit).toEqual('Hello')
+       
+    })
 })
