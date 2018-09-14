@@ -8,7 +8,7 @@ class formcomponent extends Component {
         <label>{label}</label>
         <div>
              <input {...input} type={type}/>
-            {touched && (error && <span></span>)}
+            {touched && (error && <span>{error}</span>)}
         </div>
         </div>
         
