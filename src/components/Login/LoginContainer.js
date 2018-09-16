@@ -2,7 +2,7 @@ import React from 'react'
 import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 import LoginForm from './LoginForm'
-
+import { getUser } from '../../actions/userAction'
 
  const validation = ({email='', password=''})=>{
     console.log('submitting Form: ', email);
@@ -36,6 +36,7 @@ import LoginForm from './LoginForm'
         let data ={}
         data.email = email
         data.password = password
+        this.props.dispatch(getUser(data))
         // return this.submitToServer(data)
 }
 }
