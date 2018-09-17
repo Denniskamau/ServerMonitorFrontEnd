@@ -1,6 +1,6 @@
 {
 	"presets": ["es2015", "react", "babel-preset-stage-0"] ,
 	"plugins": [
-		["transform-react-jsx"]
+		["transform-react-jsx",{"spec": true}]
 	]
 }

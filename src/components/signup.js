@@ -6,7 +6,7 @@ import formcomponent from './formcomponent'
 
 import store from '../store';
 
-class SignupForm extends Component {
+export class SignupForm extends Component {
     constructor(props){
         super(props)
         this.state ={
@@ -16,6 +16,7 @@ class SignupForm extends Component {
         }
 
         this.getStoreState = this.getStoreState.bind(this)
+        
     }
 
 
@@ -42,33 +43,36 @@ class SignupForm extends Component {
         return this.state
     }
    
-       
-         submit =  ({email='',password='',dispatch}) => {
-            let errors ={}
-            let isError = false
-            if (email.trim() === ''){
-                errors.email = 'Required'
-                isError = true
-            }
-            if(!isValidEmail(email)){
-                let error = 'Invalid email'
-                errors.email = error
-                isError = true
-                throw new SubmissionError(error)
-            }
-            if (password.trim()=== ''){
-                errors.password ='Required'
-                isError = true
-            }
-            if(isError){
-                throw new SubmissionError(errors)
-            }else {
-                // push data to api
-                let data ={}
-                data.email = email
-                data.password = password
-                return this.submitToServer(data)
-        }
+    submitest (val) {
+        console.log('submit test', val)
+    } 
+    submit =  (val) => {
+        //     let errors ={}
+        //     let isError = false
+        //     if (email.trim() === ''){
+        //         errors.email = 'Required'
+        //         isError = true
+        //     }
+        //     if(!isValidEmail(email)){
+        //         let error = 'Invalid email'
+        //         errors.email = error
+        //         isError = true
+        //         throw new SubmissionError(error)
+        //     }
+        //     if (password.trim()=== ''){
+        //         errors.password ='Required'
+        //         isError = true
+        //     }
+        //     if(isError){
+        //         throw new SubmissionError(errors)
+        //     }else {
+        //         // push data to api
+        //         let data ={}
+        //         data.email = email
+        //         data.password = password
+        //         return this.submitToServer(data)
+        // }
+        console.log('value is', val)
     
     }
     render() {
@@ -105,7 +109,8 @@ class SignupForm extends Component {
 
 
 SignupForm = reduxForm({
-    form: 'SignupForm'
+    form: 'SignupForm',
+    
 })(SignupForm)
 
 
