@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import  {SignupForm } from '../../src/components/signup'
+import  { SignupForm } from '../../src/components/signup'
 
 // describe('render signup component', ()=>{
 //     let wrapper
@@ -8,25 +8,23 @@ import  {SignupForm } from '../../src/components/signup'
 //         wrapper = shallow(<SignupForm />)
 //         // console.log('wrapper',JSON.stringify(wrapper))
 //     })
-//     it('should render correctly', ()=>{
-//         // const wrapper = shallow(<Signup/>)
-//         console.log('wrapper', wrapper)
-//         expect(wrapper).toMatchSnapshot();
-//     })
-//     it('should find signup form', () => {
-//         expect(wrapper.find('[form]').length).toEqual(1);
+//     // it('should render correctly', ()=>{
+//     //     // const wrapper = shallow(<Signup/>)
+//     //     console.log('wrapper', wrapper)
+//     //     expect(wrapper).toMatchSnapshot();
+//     // })
+//     it('should find signup ethodm', () => {
+        
 //     });
 
 
 // })
 
 describe('find submit function', ()=>{
-    const myForm = new SignupForm
-    it('find submit to be defined', ()=>{
-        expect(myForm.submit).toBeDefined()
-    })
+    const form = new SignupForm()
     
-    it('should console log value', ()=>{
-        expect(myForm.submitest).toBeDefined()
+    it('should find submit function defined', ()=>{
+        expect(form.submit).toBeDefined()
     })
+ 
 })
