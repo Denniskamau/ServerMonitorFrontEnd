@@ -28,10 +28,11 @@ export  function validation(data){
         isError = true
     }
     if(isError){    
-       
+    
         return errors
     }else {
         // push data to api
+        console.log('error', errors)
         let data ={}
         data.email = data.email
         data.password = data.password
