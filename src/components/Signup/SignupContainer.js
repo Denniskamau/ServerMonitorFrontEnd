@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
-import SignupForm from './LoginForm'
+import SignupForm from './SignupForm'
 import { getUser } from '../../actions/userAction'
 
  const validation = ({email='', password=''})=>{
