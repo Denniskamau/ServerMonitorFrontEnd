@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import Signup from './components/signup';
-import Login from './components/login'
+import {Router, Route, Link } from 'react-router-dom'
 import LoginContainer from './components/Login/LoginContainer'
 import SignupContainer from './components/Signup/SignupContainer'
 class App extends Component {
 
   render() {
     return (
-      // <div><Login ></Login></div>
+
+      
       <div>
-        {/* <Signup store={this.props.store}></Signup>
-        <hr></hr>
-        <Login store={this.props.store}></Login> */}
-        <SignupContainer />
-        <hr></hr>
-        <LoginContainer />
+        <header>
+          <Link to="/" >Login</Link>
+          <Link to="/signup">Signup</Link>
+        </header>
+
+        <main>
+
+          <Route exact path="/" component={SignupContainer}/>
+          <Route  path="/signup" copmonent={LoginContainer}/>
+        </main>
       </div>
+      
+
 
     )
   }
