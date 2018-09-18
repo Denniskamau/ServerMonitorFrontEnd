@@ -43,32 +43,40 @@ export class SignupForm extends Component {
         return this.state
     }
    
-    submit = ({email='', password=''})=> {
-            let errors ={}
-            let isError = false
-            if (email.trim() === ''){
-                errors.email = 'Required'
-                isError = true
-            }
-            if(!isValidEmail(email)){
-                let error = 'Invalid email'
-                errors.email = error
-                isError = true
-                throw new SubmissionError(error)
-            }
-            if (password.trim()=== ''){
-                errors.password ='Required'
-                isError = true
-            }
-            if(isError){
-                throw new SubmissionError(errors)
-            }else {
-                // push data to api
-                let data ={}
-                data.email = email
-                data.password = password
-                return this.submitToServer(data)
+    submit = (data)=> {
+
+        console.log('hello from signup')
+        let errors = {}
+        if(data.email == ''){
+            errors.email = 'Required'
+            console.log('errors in signup', errors)
+            return errors;
         }
+        //     let errors ={}
+        //     let isError = false
+        //     if (email.trim() === ''){
+        //         errors.email = 'Required'
+        //         isError = true
+        //     }
+        //     if(!isValidEmail(email)){
+        //         let error = 'Invalid email'
+        //         errors.email = error
+        //         isError = true
+        //         throw new SubmissionError(error)
+        //     }
+        //     if (password.trim()=== ''){
+        //         errors.password ='Required'
+        //         isError = true
+        //     }
+        //     if(isError){
+        //         throw new SubmissionError(errors)
+        //     }else {
+        //         // push data to api
+        //         let data ={}
+        //         data.email = email
+        //         data.password = password
+        //         return this.submitToServer(data)
+        // }
     
     }
     render() {

@@ -1,30 +1,19 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import  { SignupForm } from '../../src/components/signup'
-
-// describe('render signup component', ()=>{
-//     let wrapper
-//     beforeEach(()=>{
-//         wrapper = shallow(<SignupForm />)
-//         // console.log('wrapper',JSON.stringify(wrapper))
-//     })
-//     // it('should render correctly', ()=>{
-//     //     // const wrapper = shallow(<Signup/>)
-//     //     console.log('wrapper', wrapper)
-//     //     expect(wrapper).toMatchSnapshot();
-//     // })
-//     it('should find signup ethodm', () => {
-        
-//     });
-
-
-// })
+import {validation} from '../../src/components/Login/LoginContainer'
+import {SubmissionError } from 'redux-form'
 
 describe('find submit function', ()=>{
-    const form = new SignupForm()
-    
+    const form = validation
+    // console.log('submit is', form)
     it('should find submit function defined', ()=>{
-        expect(form.submit).toBeDefined()
+        // expect(submit()).toBeDefined()
+        const data = {
+            email: undefined,
+            password: 'password'
+        }
+        const errors = { email:'Required'}
+        
+        expect(validation(data)).toEqual()
     })
  
 })

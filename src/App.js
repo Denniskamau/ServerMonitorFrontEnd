@@ -9,11 +9,11 @@ class App extends Component {
     return (
       // <div><Login ></Login></div>
       <div>
-        <Signup store={this.props.store}></Signup>
+        {/* <Signup store={this.props.store}></Signup>
         <hr></hr>
-        {/* <Login store={this.props.store}></Login>
+        <Login store={this.props.store}></Login> */}
 
-        <LoginContainer store={this.props.store}/> */}
+        <LoginContainer />
       </div>
 
     )

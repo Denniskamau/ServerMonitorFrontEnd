@@ -6,7 +6,7 @@ class formcomponent extends Component {
     return (
         <div className="input-row">
         <label>{label}</label>
-        <div>
+        <div class="error">
              <input {...input} type={type}/>
             {touched && (error && <span>{error}</span>)}
         </div>

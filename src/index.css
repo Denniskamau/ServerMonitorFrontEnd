@@ -71,3 +71,10 @@ div.error {
   padding: 5px 0px;
   font-size: 1em;
 }
+
+.error {
+  text-align: left;
+  color: red;
+  padding: 5px 0px;
+  font-size: 1em; 
+}
