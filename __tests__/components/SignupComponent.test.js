@@ -26,8 +26,6 @@ describe('Test validation function', ()=>{
             password: undefined
         }
         expect(validation(data)).toEqual({password:'Required'})
-    })
-
-    
+    }) 
  
 })
