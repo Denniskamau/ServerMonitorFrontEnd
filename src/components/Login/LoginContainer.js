@@ -11,20 +11,22 @@ export  function validation(data){
     // console.log('submitting Form: ', data.password);
     let errors ={}
     let isError = false
+    if(data.email== undefined && data.password== undefined){
+        errors.email = 'Required'
+        errors.password = 'Required'
+        isError = true
+    }
     if (data.email == undefined){
         errors.email = 'Required'
         // console.log('email',errors.email)
         isError = true
         // return errors
-    }
-    if (data.email != undefined){
-        if(!isValidEmail(data.email)){
+    }else if (!isValidEmail(data.email)){
+        
             let error = 'Invalid email'
             errors.email = error
             isError = true
-            // console.log(errors.email)
-            throw new SubmissionError(error)
-        }
+        
     }
     if (data.password == undefined ){
         errors.password ='Required'
@@ -32,8 +34,10 @@ export  function validation(data){
         isError = true
     }
     if(isError){    
-        console.log(new SubmissionError(errors))  
-        throw new SubmissionError(errors)
+        //console.log(new SubmissionError(errors))  
+        //throw new SubmissionError(errors)
+        console.log('errors', errors)
+        return errors
     }else {
         // push data to api
         let data ={}
@@ -45,15 +49,11 @@ export  function validation(data){
 
 }
 
+
 export const FormContainer = ({ handleSubmit}) => {
     const submitForm = (formValues) => {
-        let data ={}
-        data.email= formValues.email
-        data.password = formValues.password 
-        validation(data)
-        
+        validation(formValues)  
     }
-
 
     return (
         <LoginForm 

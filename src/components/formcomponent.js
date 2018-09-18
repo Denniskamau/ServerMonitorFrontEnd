@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 class formcomponent extends Component {
   render() {
-    const {type,input ,label, meta:{touched,error}} = this.props
+    const {type,input ,label, meta:{touched,error, warning}} = this.props
     return (
         <div className="input-row">
-        <label>{label}</label>
+        <label className="control-label">{label}</label>
         <div class="error">
-             <input {...input} type={type}/>
-            {touched && (error && <span>{error}</span>)}
+             <input {...input} placeholder={label} type={type} className="form-control"/>
+             {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
         </div>
         </div>
         
