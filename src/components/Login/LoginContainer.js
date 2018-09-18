@@ -6,9 +6,6 @@ import { getUser } from '../../actions/userAction'
 
 
 export  function validation(data){
-    // console.log('hello from submit', data)
-    // console.log('submitting Form: ', data.email);
-    // console.log('submitting Form: ', data.password);
     let errors ={}
     let isError = false
     if(data.email== undefined && data.password== undefined){
@@ -18,9 +15,8 @@ export  function validation(data){
     }
     if (data.email == undefined){
         errors.email = 'Required'
-        // console.log('email',errors.email)
         isError = true
-        // return errors
+      
     }else if (!isValidEmail(data.email)){
         
             let error = 'Invalid email'
@@ -30,13 +26,10 @@ export  function validation(data){
     }
     if (data.password == undefined ){
         errors.password ='Required'
-        // console.log(errors.password)
+  
         isError = true
     }
     if(isError){    
-        //console.log(new SubmissionError(errors))  
-        //throw new SubmissionError(errors)
-        console.log('errors', errors)
         return errors
     }else {
         // push data to api
