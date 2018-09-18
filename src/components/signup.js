@@ -101,7 +101,7 @@ export class SignupForm extends Component {
                     <button class="btn btn-primary" type="submit" disabled={pristine || submitting}>Submit</button>
                     <p>{checkState.error}</p>
                     </form>
-                    
+                   
                     </div>
             </div>
 

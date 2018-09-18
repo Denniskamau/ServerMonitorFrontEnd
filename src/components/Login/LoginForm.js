@@ -2,6 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 import formcomponent from '../formcomponent'
 export const LoginForm = ({ handleSubmit, onSubmit }) => {
+
   return (
     <div>
       <h1>login</h1>
@@ -16,6 +17,7 @@ export const LoginForm = ({ handleSubmit, onSubmit }) => {
           Submit
         </button>
       </form>
+      
     </div>
   );
 }

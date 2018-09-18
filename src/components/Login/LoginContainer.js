@@ -6,36 +6,34 @@ import { getUser } from '../../actions/userAction'
 
 
 export  function validation(data){
-    console.log('hello from submit', data)
-    console.log('submitting Form: ', data.email);
-    console.log('submitting Form: ', data.password);
+    // console.log('hello from submit', data)
+    // console.log('submitting Form: ', data.email);
+    // console.log('submitting Form: ', data.password);
     let errors ={}
     let isError = false
     if (data.email == undefined){
         errors.email = 'Required'
-        console.log('email',errors.email)
+        // console.log('email',errors.email)
         isError = true
+        // return errors
     }
-    if ( !data.email == undefined){
+    if (data.email != undefined){
         if(!isValidEmail(data.email)){
             let error = 'Invalid email'
             errors.email = error
             isError = true
-            console.log(errors.email)
+            // console.log(errors.email)
             throw new SubmissionError(error)
         }
     }
     if (data.password == undefined ){
         errors.password ='Required'
-        console.log(errors.password)
+        // console.log(errors.password)
         isError = true
     }
-    if(isError){
-        console.log('all errors',errors)
-        let message = new SubmissionError(errors)
-        throw message
-        return message.errors
-        // throw new SubmissionError(errors)
+    if(isError){    
+        console.log(new SubmissionError(errors))  
+        throw new SubmissionError(errors)
     }else {
         // push data to api
         let data ={}
@@ -56,11 +54,13 @@ export const FormContainer = ({ handleSubmit}) => {
         
     }
 
+
     return (
         <LoginForm 
             onSubmit={submitForm}
             handleSubmit={handleSubmit}
         />
+        
     )
 }
 

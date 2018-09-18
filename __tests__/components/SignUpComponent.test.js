@@ -11,9 +11,8 @@ describe('find submit function', ()=>{
             email: undefined,
             password: 'password'
         }
-        const errors = { email:'Required'}
         
-        expect(validation(data)).toEqual()
+        expect(validation(data)).toEqual({ email:'Required'})
     })
  
 })
