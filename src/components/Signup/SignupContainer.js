@@ -3,7 +3,7 @@ import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 import SignupForm from './SignupForm'
 import { getUser } from '../../actions/userAction'
-
+import {connect } from 'react-redux'
  const validation = ({email='', password=''})=>{
     console.log('submitting Form: ', email);
     console.log('submitting Form: ', password);
@@ -60,5 +60,7 @@ const formConfiguration = {
     form: 'signup',
     validation
 }
+
+
 
 export default reduxForm(formConfiguration)(FormContainer)

@@ -5,6 +5,8 @@ import LoginForm from './LoginForm'
 import { bindActionCreators } from 'redux';
 import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
+import { getUser } from '../../actions/userAction';
+import store from '../../store';
 
 export  function validation(data){
     let errors ={}
@@ -41,15 +43,17 @@ export  function validation(data){
         let data ={}
         data.email = data.email
         data.password = data.password
-        //submitToServer(data)
+        submitToServer(data)
         // return this.submitToServer(data)
 }
 
 }
 
-// function submitToServer(user){
-//     this.props.dispatch(getUser(user))
-// }
+function submitToServer(user,props){
+    console.log('new user', user)
+    return store.dispatch(getUser(user))
+    //this.props.dispatch(getUser(user))
+}
 
 
 export const FormContainer = ({ handleSubmit, props}) => {
@@ -70,10 +74,11 @@ export const FormContainer = ({ handleSubmit, props}) => {
     )
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    
-    changePage: () => push('/signup')
-},dispatch)
+function mapDispatchToProps(dispatch){
+    return {
+        user:bindActionCreators(getUser,dispatch)
+    }
+}
 
 
 
