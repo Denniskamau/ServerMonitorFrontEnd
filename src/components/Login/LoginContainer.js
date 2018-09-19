@@ -11,6 +11,7 @@ import store from '../../store';
 export  function validation(data){
     let errors ={}
     let isError = false
+    console.log('data', data)
     if(data.email=== undefined && data.password=== undefined){
         errors.email = 'Required'
         errors.password = 'Required'
@@ -40,10 +41,11 @@ export  function validation(data){
         return errors
     }else {
         // push data to api
-        let data ={}
-        data.email = data.email
-        data.password = data.password
-        submitToServer(data)
+        let user ={}
+        user.password = data.password
+        user.email = data.email
+        console.log('user', user)
+        store.dispatch(getUser(user))
         // return this.submitToServer(data)
 }
 

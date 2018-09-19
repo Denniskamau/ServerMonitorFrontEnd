@@ -4,6 +4,9 @@ import isValidEmail from 'sane-email-validation'
 import SignupForm from './SignupForm'
 import { getUser } from '../../actions/userAction'
 import {connect } from 'react-redux'
+
+import { signUpUser } from '../../actions/userAction';
+import store from '../../store';
  const validation = ({email='', password=''})=>{
     console.log('submitting Form: ', email);
     console.log('submitting Form: ', password);
@@ -36,7 +39,7 @@ import {connect } from 'react-redux'
         let data ={}
         data.email = email
         data.password = password
-        this.props.dispatch(getUser(data))
+        store.dispatch(signUpUser(data))
         // return this.submitToServer(data)
 }
 }
