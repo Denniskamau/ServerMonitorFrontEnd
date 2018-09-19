@@ -1,18 +1,18 @@
 import React , {Component} from 'react'
-import SignupForm from './signup'
-
+import {Link} from "react-router-dom"
 
 export  class Home extends Component {
-    // handleSubmit = (values) => {
-    //     // Do something with the form values
-    //     console.log(values);
-    //   }
-    Submit = (values) => {
-        console.log('Values', values)
-    }
-    render() {
 
- 
-        <SignupForm onSubmit={this.Submit} />
+    render() {
+        return (
+            <div>
+            <div>Welocome Home</div>
+            <button><Link to='/'>logout</Link></button>
+            </div>
+            
+        )
+       
     }
 }
+
+export default Home

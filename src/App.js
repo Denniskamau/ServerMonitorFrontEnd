@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import {Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import LoginContainer from './components/Login/LoginContainer'
 import SignupContainer from './components/Signup/SignupContainer'
+import Home from './components/Home'
 class App extends Component {
 
   render() {
     return (
 
-      
+    <Router>
       <div>
-        <header>
-          <Link to="/" >Login</Link>
-          <Link to="/signup">Signup</Link>
-        </header>
-
-        <main>
-
-          <Route exact path="/" component={LoginContainer}/>
-          <Route  path="/signup" copmonent={SignupContainer}/>
-        </main>
+        <Link to="/">Login</Link>
+        <Link to="/signup">Signup</Link>
+        <hr></hr>
+        <Route exact path="/" component={LoginContainer} />
+        <Route path="/signup" component={SignupContainer} />
+        <Route path="/home" component={Home} />
       </div>
+    </Router>
       
 
 

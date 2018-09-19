@@ -2,8 +2,6 @@ import React from 'react'
 import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 import SignupForm from './SignupForm'
-import { getUser } from '../../actions/userAction'
-import {connect } from 'react-redux'
 
 import { signUpUser } from '../../actions/userAction';
 import store from '../../store';

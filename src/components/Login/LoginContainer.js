@@ -7,6 +7,8 @@ import { push } from 'connected-react-router'
 import { connect } from 'react-redux'
 import { getUser } from '../../actions/userAction';
 import store from '../../store';
+import {Link} from "react-router-dom"
+
 
 export  function validation(data){
     let errors ={}
@@ -51,11 +53,6 @@ export  function validation(data){
 
 }
 
-function submitToServer(user,props){
-    console.log('new user', user)
-    return store.dispatch(getUser(user))
-    //this.props.dispatch(getUser(user))
-}
 
 
 export const FormContainer = ({ handleSubmit, props}) => {
@@ -65,11 +62,15 @@ export const FormContainer = ({ handleSubmit, props}) => {
 
     return (
         <div>
-       
          <LoginForm 
             onSubmit={submitForm}
             handleSubmit={handleSubmit}
         />
+
+        <br></br>
+        <p>Don't have an account?Click the button to signup</p>
+        <button><Link to='/signup'>signup</Link></button>
+        <button><Link to='/home'>home</Link></button>
         </div>
     
         
