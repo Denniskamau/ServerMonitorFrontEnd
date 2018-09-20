@@ -3,43 +3,42 @@ import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 import SignupForm from './SignupForm'
 
-import { signUpUser } from '../../actions/userAction';
-import store from '../../store';
- const validation = ({email='', password=''})=>{
-    console.log('submitting Form: ', email);
-    console.log('submitting Form: ', password);
+export  function validation(data){
     let errors ={}
     let isError = false
-    if (email.trim() === ''){
+    if(data.email== undefined && data.password== undefined){
         errors.email = 'Required'
-        console.log('email',errors.email)
+        errors.password = 'Required'
         isError = true
     }
-    if ( !email.trim() === ''){
-        if(!isValidEmail(email)){
+    if (data.email == undefined){
+        errors.email = 'Required'
+        isError = true
+    }else if (!isValidEmail(data.email)){
+        
             let error = 'Invalid email'
             errors.email = error
             isError = true
-            console.log(errors.email)
-            throw new SubmissionError(error)
-        }
+        
     }
-    if (password.trim()=== ''){
+    if (data.password == undefined ){
         errors.password ='Required'
-        console.log(errors.password)
+       
         isError = true
     }
-    if(isError){
-        console.log('all errors',JSON.stringify(errors))
-        throw new SubmissionError(errors)
+    if(isError){    
+    
+        return errors
     }else {
         // push data to api
+        console.log('error', errors)
         let data ={}
-        data.email = email
-        data.password = password
-        store.dispatch(signUpUser(data))
+        data.email = data.email
+        data.password = data.password
+        this.props.dispatch(getUser(data))
         // return this.submitToServer(data)
 }
+
 }
 export const FormContainer = ({ handleSubmit}) => {
     const submitForm = (formValues) => {

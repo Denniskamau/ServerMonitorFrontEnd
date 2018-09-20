@@ -20,6 +20,7 @@ export  function validation(data){
     if (data.email === undefined){
         errors.email = 'Required'
         isError = true
+      
     }else if (!isValidEmail(data.email)){
         
             let error = 'Invalid email'
@@ -29,10 +30,10 @@ export  function validation(data){
     }
     if (data.password === undefined ){
         errors.password ='Required'
+  
         isError = true
     }
     if(isError){    
-        throw new SubmissionError(errors)
         return errors
     }else {
         let user ={}
