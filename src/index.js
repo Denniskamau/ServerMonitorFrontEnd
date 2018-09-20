@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { ConnectedRouter } from 'connected-react-router'
-import store, { history } from './store'
+import store from './store'
 import { Provider } from 'react-redux';
 
 

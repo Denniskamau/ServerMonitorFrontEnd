@@ -22,7 +22,7 @@ export const  getUser = (data) => dispatch => {
             dispatch({
               type:POST_USER,
               payload: user
-            }),
+            })
             dispatch({
               type:SETUP_SESSION,
               payload: user
@@ -57,7 +57,7 @@ export const signUpUser = (data) => dispatch => {
       dispatch({
         type: SIGNUP_USER,
         payload: user
-      }),
+      })
       dispatch({
         type:SETUP_SESSION,
         payload: user

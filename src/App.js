@@ -4,7 +4,6 @@ import LoginContainer from './components/Login/LoginContainer'
 import SignupContainer from './components/Signup/SignupContainer'
 import Home from './components/Home'
 import {history} from './store'
-import store from './store'
 import { ConnectedRouter } from 'connected-react-router'
 class App extends Component {
 

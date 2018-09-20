@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
                 error: action.payload.error
             }
         case SETUP_SESSION:
-              if(state.userToken.session != ''){
+              if(state.userToken.session !== ''){
                 sessionStorage.setItem('token', state.userToken.session)
                 //history.push('/home')
             }
