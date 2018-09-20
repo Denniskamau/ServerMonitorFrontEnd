@@ -1,7 +1,10 @@
 import {
     POST_USER,
-    SIGNUP_USER   
+    SIGNUP_USER  ,
+    SETUP_SESSION 
   } from '../actions/types';
+
+ 
 
 const initialState = {
     loading: true,
@@ -20,6 +23,9 @@ const userReducer = (state = initialState, action) => {
                 userToken: action.payload,
                 error: action.payload.error
             }
+        case SETUP_SESSION:
+            console.log('hello from session reducer')
+            console.log('session', state.userToken)
         case SIGNUP_USER:
             console.log('reducer hit')
             return {

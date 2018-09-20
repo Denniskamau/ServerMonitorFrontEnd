@@ -38,7 +38,7 @@ export  function validation(data){
     }
     if(isError){    
         //console.log(new SubmissionError(errors))  
-        //throw new SubmissionError(errors)
+        throw new SubmissionError(errors)
         console.log('errors', errors)
         return errors
     }else {
@@ -48,13 +48,16 @@ export  function validation(data){
         user.email = data.email
         console.log('user', user)
         store.dispatch(getUser(user))
-        // return this.submitToServer(data)
+        getStoreState()
 }
 
 }
 
 
-
+const getStoreState = () => {
+    const state = store.getState()
+    console.log('state is', state)
+}
 export const FormContainer = ({ handleSubmit, props}) => {
     const submitForm = (formValues) => {
         validation(formValues)  

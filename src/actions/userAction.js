@@ -3,7 +3,7 @@ import {
   POST_USER,
   SIGNUP_USER   
 } from './types';
-
+ import {history} from '../store'
 export const  getUser = (data) => dispatch => {
       fetch(
           'http://localhost:8080/user/login', { 
@@ -19,7 +19,9 @@ export const  getUser = (data) => dispatch => {
           dispatch({
             type:POST_USER,
             payload: user
-          })
+          }),
+          localStorage.setItem('token', user.session)
+          history.push('/home')
         })
       
 }

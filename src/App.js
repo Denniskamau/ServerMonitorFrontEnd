@@ -5,6 +5,10 @@ import SignupContainer from './components/Signup/SignupContainer'
 import Home from './components/Home'
 class App extends Component {
 
+  componentDidUpdate() {
+    console.log('component updated')
+    this.forceUpdate()
+  }
   render() {
     return (
 
@@ -13,7 +17,7 @@ class App extends Component {
         <Link to="/">Login</Link>
         <Link to="/signup">Signup</Link>
         <hr></hr>
-        <Route exact path="/" component={LoginContainer} />
+        <Route exact path="/" component={LoginContainer}  />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/home" component={Home} />
       </div>
