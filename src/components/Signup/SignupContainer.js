@@ -2,18 +2,20 @@ import React from 'react'
 import { reduxForm, SubmissionError } from 'redux-form'
 import isValidEmail from 'sane-email-validation'
 import SignupForm from './SignupForm'
-
+import { signUpUser } from '../../actions/userAction';
+import store from '../../store';
 export  function validation(data){
     let errors ={}
     let isError = false
-    if(data.email== undefined && data.password== undefined){
+    if(data.email=== undefined && data.password=== undefined){
         errors.email = 'Required'
         errors.password = 'Required'
         isError = true
     }
-    if (data.email == undefined){
+    if (data.email === undefined){
         errors.email = 'Required'
         isError = true
+      
     }else if (!isValidEmail(data.email)){
         
             let error = 'Invalid email'
@@ -21,22 +23,19 @@ export  function validation(data){
             isError = true
         
     }
-    if (data.password == undefined ){
+    if (data.password === undefined ){
         errors.password ='Required'
-       
+  
         isError = true
     }
     if(isError){    
-    
         return errors
     }else {
-        // push data to api
-        console.log('error', errors)
-        let data ={}
-        data.email = data.email
-        data.password = data.password
-        this.props.dispatch(getUser(data))
-        // return this.submitToServer(data)
+        let user ={}
+        user.password = data.password
+        user.email = data.email
+        store.dispatch(signUpUser(user))
+        
 }
 
 }

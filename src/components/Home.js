@@ -6,7 +6,7 @@ export  class Home extends Component {
     render() {
         return (
             <div>
-            <div>Welocome Home</div>
+            <div>Welcome Home</div>
             <button><Link to='/'>logout</Link></button>
             </div>
             

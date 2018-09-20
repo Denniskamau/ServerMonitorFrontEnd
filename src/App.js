@@ -15,6 +15,7 @@ class App extends Component {
     <Router>
       <ConnectedRouter history={history}>
       <div>
+        
         <Link to="/">Login</Link>
         <Link to="/signup">Signup</Link>
         <hr></hr>

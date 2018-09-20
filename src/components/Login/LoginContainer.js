@@ -40,15 +40,13 @@ export  function validation(data){
         user.password = data.password
         user.email = data.email
         store.dispatch(getUser(user))
-        getStoreState()
+        
 }
 
 }
 
 
-const getStoreState = () => {
-    const state = store.getState()
-}
+
 export const FormContainer = ({ handleSubmit, props}) => {
     const submitForm = (formValues) => {
         validation(formValues)  
@@ -61,10 +59,6 @@ export const FormContainer = ({ handleSubmit, props}) => {
             handleSubmit={handleSubmit}
         />
 
-        <br></br>
-        <p>Don't have an account?Click the button to signup</p>
-        <button><Link to='/signup'>signup</Link></button>
-        <button><Link to='/home'>home</Link></button>
         </div>
     
         
