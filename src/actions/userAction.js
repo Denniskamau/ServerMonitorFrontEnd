@@ -1,9 +1,11 @@
 
 import {
   POST_USER,
-  SIGNUP_USER   
+  SIGNUP_USER,   
+  SETUP_SESSION
 } from './types';
- import {history} from '../store'
+ 
+import {history} from '../store'
 export const  getUser = (data) => dispatch => {
       fetch(
           'http://localhost:8080/user/login', { 
@@ -16,13 +18,27 @@ export const  getUser = (data) => dispatch => {
         )
         .then(res => res.json())
         .then( user =>{
-          dispatch({
-            type:POST_USER,
-            payload: user
-          }),
-          localStorage.setItem('token', user.session)
-          history.push('/home')
+          console.log('user in action',user)
+          if(user.session){
+            dispatch({
+              type:POST_USER,
+              payload: user
+            }),
+            dispatch({
+              type:SETUP_SESSION,
+              payload: user
+            })
+            history.push('/home')
+          }
+          else {
+            dispatch({
+              type:POST_USER,
+              payload: user
+            })
+          }
+ 
         })
+        
       
 }
 

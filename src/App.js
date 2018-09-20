@@ -3,16 +3,17 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import LoginContainer from './components/Login/LoginContainer'
 import SignupContainer from './components/Signup/SignupContainer'
 import Home from './components/Home'
+import {history} from './store'
+import store from './store'
+import { ConnectedRouter } from 'connected-react-router'
 class App extends Component {
 
-  componentDidUpdate() {
-    console.log('component updated')
-    this.forceUpdate()
-  }
+
   render() {
     return (
 
     <Router>
+      <ConnectedRouter history={history}>
       <div>
         <Link to="/">Login</Link>
         <Link to="/signup">Signup</Link>
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path="/signup" component={SignupContainer} />
         <Route path="/home" component={Home} />
       </div>
+      </ConnectedRouter>
     </Router>
       
 

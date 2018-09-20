@@ -4,7 +4,7 @@ import {
     SETUP_SESSION 
   } from '../actions/types';
 
- 
+  
 
 const initialState = {
     loading: true,
@@ -26,6 +26,16 @@ const userReducer = (state = initialState, action) => {
         case SETUP_SESSION:
             console.log('hello from session reducer')
             console.log('session', state.userToken)
+            if(state.userToken.session != ''){
+                sessionStorage.setItem('token', state.userToken.session)
+                //history.push('/home')
+            }
+            return{
+                ...state,
+                loading:false,
+                userToken: action.payload,
+                error: action.payload.error  
+            }
         case SIGNUP_USER:
             console.log('reducer hit')
             return {
