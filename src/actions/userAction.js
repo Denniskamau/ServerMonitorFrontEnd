@@ -18,7 +18,6 @@ export const  getUser = (data) => dispatch => {
         )
         .then(res => res.json())
         .then( user =>{
-          console.log('user in action',user)
           if(user.session){
             dispatch({
               type:POST_USER,
@@ -54,9 +53,23 @@ export const signUpUser = (data) => dispatch => {
   )
   .then(res => res.json())
   .then( user => {
-    dispatch({
-      type: SIGNUP_USER,
-      payload: user
-    })
+    if(user.session){
+      dispatch({
+        type: SIGNUP_USER,
+        payload: user
+      }),
+      dispatch({
+        type:SETUP_SESSION,
+        payload: user
+      })
+      history.push('/home')
+
+    }else {
+      dispatch({
+        type: SIGNUP_USER,
+        payload: user
+      })
+    }
+
   })
 }
