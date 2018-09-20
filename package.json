@@ -53,7 +53,7 @@
     "redux-mock-store": "^1.5.3"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "/home/dennis/Desktop/projects/HackerBay/ServerMonitorFrontEnd/__tests__/setup/setupEnzyme.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.js",
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/setup/"
     ]
