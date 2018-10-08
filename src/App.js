@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import LoginContainer from './components/Login/LoginContainer'
 import SignupContainer from './components/Signup/SignupContainer'
 import Home from './components/Home'
+import DashboardContainer from './components/Dashboard/DashboardContainer'
 import {history} from './store'
 import { ConnectedRouter } from 'connected-react-router'
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
         <hr></hr>
         <Route exact path="/" component={LoginContainer}  />
         <Route path="/signup" component={SignupContainer} />
+        <Route path = "/dashboard" component= {DashboardContainer} />
         <Route path="/home" component={Home} />
       </div>
       </ConnectedRouter>

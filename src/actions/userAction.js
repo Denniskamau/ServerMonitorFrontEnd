@@ -27,7 +27,7 @@ export const  getUser = (data) => dispatch => {
               type:SETUP_SESSION,
               payload: user
             })
-            history.push('/home')
+            history.push('/dashboard')
           }
           else {
             dispatch({
@@ -62,7 +62,7 @@ export const signUpUser = (data) => dispatch => {
         type:SETUP_SESSION,
         payload: user
       })
-      history.push('/home')
+      history.push('/dashboard')
 
     }else {
       dispatch({
