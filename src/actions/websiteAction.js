@@ -22,32 +22,38 @@ export const saveWebsite = (data)=> dispatch => {
             },
             body: JSON.stringify(data)
         }
-    ).then (res => {
-        //if success call addwebsite success
+    ).then (res => res.json())
+    .then (site => {
+                //if success call addwebsite success
         //if failed call add website failed
-        console.log('response is ', res)
-        if(res.status == 200){
-
+        
+        if(site.newsite){
+            
             dispatch({
                 type:ADDWEBSITE_SUCCESS,
-                payload: res.body
+                payload: site.newsite
             })
-        }else if(res.status != 200){
+        }else if(site.error){
+            
             dispatch({
                 type:ADDWEBSITE_FAILED,
-                payload: res.body
+                payload: site.error
             })
         }else {
+           
             dispatch({
                 type:ADDWEBSITE_RESET
             })
         }
-        
     })
 }
 
 
 export const showSavedWebsite = () => dispatch => {
+    //call addwebsite_request to show the loader
+    dispatch({
+      type:ADDWEBSITE_REQUEST
+    })
     fetch(
         Api + '/list', {
             method: 'GET',
@@ -56,23 +62,26 @@ export const showSavedWebsite = () => dispatch => {
             }
 
         }
-    ).then (res =>{
-        //if success call addwebsite success
+    ).then (res => res.json())
+    .then (site => {
+                //if success call addwebsite success
         //if failed call add website failed
-        if(res.status == 200){
-            dispatch({
-                type:ADDWEBSITE_SUCCESS,
-                payload: res.body
-            })
-        }else if(res.status != 200){
-            dispatch({
-                type:ADDWEBSITE_FAILED,
-                payload: res.body
-            })
-        }else {
-            dispatch({
-                type:ADDWEBSITE_RESET
-            })
-        }
+        console.log('geting ites', site)
+        console.log(typeof(site))
+        // if(res.status == 200){
+        //     dispatch({
+        //         type:ADDWEBSITE_SUCCESS,
+        //         payload: ''
+        //     })
+        // }else if(res.status != 200){
+        //     dispatch({
+        //         type:ADDWEBSITE_FAILED,
+        //         payload: ''
+        //     })
+        // }else {
+        //     dispatch({
+        //         type:ADDWEBSITE_RESET
+        //     })
+        // }
     })
 }
