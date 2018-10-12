@@ -2,7 +2,8 @@ import React from 'react'
 import { reduxForm, SubmissionError } from 'redux-form'
 import WebsiteList from './WebsiteList'
 import WebsiteForm from './WebsiteForm'
-
+import store from '../../store'
+import {saveWebsite} from '../../actions/websiteAction'
 export  function validation(data){
     let errors = {}
     let isError = false
@@ -23,6 +24,7 @@ export  function validation(data){
         newWebsite.name = data.name
         newWebsite.url = data.url
         //dispatch action to send data to backend
+        store.dispatch(saveWebsite(newWebsite))
     }
 
 }
