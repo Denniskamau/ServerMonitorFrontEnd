@@ -18,6 +18,7 @@ class App extends Component {
         
         <Link to="/">Login</Link>
         <Link to="/signup">Signup</Link>
+        <Link to="/">Logout</Link>
         <hr></hr>
         <Route exact path="/" component={LoginContainer}  />
         <Route path="/signup" component={SignupContainer} />

@@ -5,35 +5,28 @@ import {
     ADDWEBSITE_RESET
 }from '../actions/types'
 
-const initialState = {
-    name : '',
-    url : '',
-    status: '',
-    error:''
-}
+const initialState = {}
 
 const WebsiteReducer = (state = initialState, action) =>{
     switch(action.type){
         case ADDWEBSITE_SUCCESS:
+        //console.log('success reducer', action.payload)
+        state =  action.payload
             return {
-                ...state,
-                name: action.payload.Name,
-                url: action.payload.URL,
-                status: action.payload.Status,
-                
+                state 
             }
         case ADDWEBSITE_FAILED:
             return {
-                ...state,
-                error: action.payload.error
+                state
+
             }
         case ADDWEBSITE_REQUEST:
             return {
-                ...state
+                state
             }
         case ADDWEBSITE_RESET: 
             return{
-                ...state
+                state
             }
         default:
             return state

@@ -4,7 +4,8 @@ import WebsiteList from './WebsiteList'
 import WebsiteForm from './WebsiteForm'
 import store from '../../store'
 import {saveWebsite} from '../../actions/websiteAction'
-export  function validation(data){
+import {showSavedWebsite} from '../../actions/websiteAction'
+export  function pushDataToBackend(data){
     let errors = {}
     let isError = false
     if(data.name === undefined && data.url === undefined){
@@ -29,13 +30,24 @@ export  function validation(data){
 
 }
 
+export function loadDataFromBackend(){
+    store.dispatch(showSavedWebsite())
+}
+
+function getUserData(){
+    var user = store.getState()
+    var email = user.user.userEmail
+    console.log('user email', email) 
+    return email
+}
 export const DashboardContainer = ({ handleSubmit}) => {
     const submitForm = (formValues) => {
-        validation(formValues)
+        pushDataToBackend(formValues)
     }
 
     return (
         <div>
+            <p>welcome {getUserData()}</p>
         <WebsiteForm 
             onSubmit={submitForm}
             handleSubmit={handleSubmit}
@@ -48,7 +60,7 @@ export const DashboardContainer = ({ handleSubmit}) => {
 
 const formConfiguration = {
     form: 'addwebsite',
-    validation
+    pushDataToBackend
 }
 
 

@@ -51,6 +51,7 @@ export const saveWebsite = (data)=> dispatch => {
 
 export const showSavedWebsite = () => dispatch => {
     //call addwebsite_request to show the loader
+    console.log('calling showsaved')
     dispatch({
       type:ADDWEBSITE_REQUEST
     })
@@ -64,24 +65,29 @@ export const showSavedWebsite = () => dispatch => {
         }
     ).then (res => res.json())
     .then (site => {
-                //if success call addwebsite success
+        //if success call addwebsite success
         //if failed call add website failed
-        console.log('geting ites', site)
-        console.log(typeof(site))
-        // if(res.status == 200){
-        //     dispatch({
-        //         type:ADDWEBSITE_SUCCESS,
-        //         payload: ''
-        //     })
-        // }else if(res.status != 200){
-        //     dispatch({
-        //         type:ADDWEBSITE_FAILED,
-        //         payload: ''
-        //     })
-        // }else {
-        //     dispatch({
-        //         type:ADDWEBSITE_RESET
-        //     })
-        // }
+        //console.log('geting ites', site)
+        const data = JSON.stringify(site)
+        if(site.length >= 0){
+            
+            
+            //console.log('success', data)
+            dispatch({
+                type:ADDWEBSITE_SUCCESS,
+                payload:data
+            })
+        }else if(site.length <0){
+            console.log('reset')
+            dispatch({
+                type:ADDWEBSITE_RESET,
+                payload:data
+            })
+        }else {
+            console.log('failed')
+            dispatch({
+                type:ADDWEBSITE_FAILED
+            })
+        }
     })
 }

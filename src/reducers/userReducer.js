@@ -9,7 +9,8 @@ import {
 const initialState = {
     loading: true,
     error: '',
-    userToken: ''
+    userToken: '',
+    userEmail:''
 
 }
   
@@ -20,26 +21,29 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading:false,
-                userToken: action.payload,
-                error: action.payload.error
+                userToken: action.payload.session,
+                error: action.payload.error,
+                userEmail:action.payload.userEmail
             }
         case SETUP_SESSION:
               if(state.userToken.session !== ''){
-                sessionStorage.setItem('token', state.userToken.session)
+                sessionStorage.setItem('token', state.userToken)
                 //history.push('/home')
             }
             return{
                 ...state,
                 loading:false,
                 userToken: action.payload,
-                error: action.payload.error  
+                error: action.payload.error,
+                userEmail:action.payload.userEmail  
             }
         case SIGNUP_USER:
             return {
                 ...state,
                 loading: false,
                 userToken: action.payload,
-                error: action.payload.error
+                error: action.payload.error,
+                userEmail:action.payload.userEmail 
             }
         
         default:
