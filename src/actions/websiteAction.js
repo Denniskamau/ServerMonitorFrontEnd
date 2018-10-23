@@ -9,6 +9,7 @@ const Api = 'http://localhost:8080/website'
 const token = sessionStorage.getItem('token')
 export const saveWebsite = (data)=> dispatch => {
     //call addwebsite_request to show the loader
+    console.log('data is', data)
     dispatch({
         type:ADDWEBSITE_REQUEST
     })
@@ -61,27 +62,26 @@ export const showSavedWebsite = () => dispatch => {
             headers: {
                 'Authorization': 'Bearer '+ sessionStorage.getItem('token')  
             }
-
         }
     ).then (res => res.json())
     .then (site => {
         //if success call addwebsite success
         //if failed call add website failed
-        //console.log('geting ites', site)
-        const data = JSON.stringify(site)
+        console.log('geting ites', site)
+       // const data = JSON.stringify(site)
         if(site.length >= 0){
             
             
             //console.log('success', data)
             dispatch({
                 type:ADDWEBSITE_SUCCESS,
-                payload:data
+                payload:site
             })
         }else if(site.length <0){
             console.log('reset')
             dispatch({
                 type:ADDWEBSITE_RESET,
-                payload:data
+                payload:site
             })
         }else {
             console.log('failed')

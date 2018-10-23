@@ -6,6 +6,7 @@ import Home from './components/Home'
 import DashboardContainer from './components/Dashboard/DashboardContainer'
 import {history} from './store'
 import { ConnectedRouter } from 'connected-react-router'
+
 class App extends Component {
 
 
