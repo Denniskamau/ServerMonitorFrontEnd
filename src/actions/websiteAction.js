@@ -6,7 +6,7 @@ import {
 }from './types'
 
 const Api = 'http://localhost:8080/website'
-const token = sessionStorage.getItem('token')
+
 export const saveWebsite = (data)=> dispatch => {
     //call addwebsite_request to show the loader
     console.log('data is', data)
@@ -18,7 +18,7 @@ export const saveWebsite = (data)=> dispatch => {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': 'Bearer '+ token + '/'
+                'Authorization': 'Bearer '+ sessionStorage.getItem('token') + '/'
 
             },
             body: JSON.stringify(data)

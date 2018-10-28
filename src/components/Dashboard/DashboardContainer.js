@@ -54,6 +54,7 @@ class DashboardContainer extends Component {
           const { handleSubmit } = this.props
           return (
               <div>
+                  <p>welcome {this.props.user.userEmail}</p>
                 <WebsiteForm 
                   onSubmit={this.pushDataToBackend}
                   handleSubmit={handleSubmit}/>
@@ -74,7 +75,8 @@ const mapDispatchToProps = (dispatch) => (
 
   const mapStateToProps = state => {
     return {
-      website:state.website
+      website:state.website,
+      user:state.user
     }
   }
 
