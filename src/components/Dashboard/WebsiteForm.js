@@ -8,16 +8,17 @@ class WebsiteForm  extends Component {
     return (
       <div>
         <h1>Add a new website to Monitor</h1>
-          <form className="WebsiteForm" onSubmit={onSubmit}>
+          <form className="WebsiteForm" 
+              onSubmit={handleSubmit(onSubmit)}
+          >
             <Field name="name" label="Name" component={formcomponent} type="text" placeholder="name" />
             <Field name="url" label="URL" component={formcomponent} type="test" placeholder="url" />
-            <button type="submit" className="loginBtn">Add</button>
+            <button type="submit" className="addBtn">Add</button>
           </form>
       </div>
      
     )
   }
 }
-export default reduxForm({
-  form: 'WebsiteForm'
-})(WebsiteForm)
+export default WebsiteForm
+

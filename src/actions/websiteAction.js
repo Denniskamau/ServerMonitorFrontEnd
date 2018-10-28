@@ -52,7 +52,7 @@ export const saveWebsite = (data)=> dispatch => {
 
 export const showSavedWebsite = () => dispatch => {
     //call addwebsite_request to show the loader
-    console.log('calling showsaved')
+    
     dispatch({
       type:ADDWEBSITE_REQUEST
     })

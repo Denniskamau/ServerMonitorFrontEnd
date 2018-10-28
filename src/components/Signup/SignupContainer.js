@@ -50,8 +50,7 @@ export const FormContainer = ({ handleSubmit}) => {
     return (
         <SignupForm 
             onSubmit={submitForm}
-            handleSubmit={handleSubmit}
-        />
+            handleSubmit={handleSubmit}/>
     )
 }
 

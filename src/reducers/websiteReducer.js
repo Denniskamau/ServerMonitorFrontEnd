@@ -15,9 +15,6 @@ const WebsiteReducer = (state = initialState, action) =>{
     switch(action.type){
         case ADDWEBSITE_SUCCESS:
 
-        //console.log('success reducer', action.payload)
-       // state =  action.payload
-        console.log("NEW STATE AFTER FETCHING = " + state)
             return {
                 ...state,
                 loading:false,

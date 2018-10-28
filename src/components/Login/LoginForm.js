@@ -1,10 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import formcomponent from '../formcomponent'
+
+
 export const LoginForm = ({ handleSubmit, onSubmit, props }) => {
-
-
-
 
   return (
     <div>
